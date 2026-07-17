@@ -1,14 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { Link } from 'react-router-dom'
 import { useAuth } from './auth/AuthContext'
 import LoginPage from './auth/LoginPage'
+import EventCalendar from './features/race/EventCalendar'
+import { PERMISSIONS } from './auth/permissions'
 import './App.css'
 
 function App() {
-	const { user, loading, logout } = useAuth()
-	const [count, setCount] = useState(0)
+	const { user, isAdmin, loading, logout, hasPermission } = useAuth()
 
 	if (loading) {
 		return <div className="loading">Loading…</div>
@@ -23,20 +21,11 @@ function App() {
 			<header className="user-bar">
 				{user.avatar && <img src={user.avatar} alt="" className="avatar" />}
 				<span>{user.globalName || user.username}</span>
+				{hasPermission(PERMISSIONS.VIEW_RACE_PLANNER) && <Link className="admin-link" to="/race">🏁 Race Planner</Link>}
+				{isAdmin && <Link className="admin-link" to="/admin">Admin</Link>}
 				<button onClick={logout}>Log out</button>
 			</header>
-			<section id="center">
-				<div className="hero">
-					<img src={heroImg} className="base" width="170" height="179" alt="" />
-					<img src={reactLogo} className="framework" alt="React logo" />
-					<img src={viteLogo} className="vite" alt="Vite logo" />
-				</div>
-				<div>
-					<h1>Get started</h1>
-					<p>Edit <code>src/App.jsx</code> and save to test <code>HMR</code></p>
-				</div>
-				<button className="counter" onClick={() => setCount((count) => count + 1)}>Count is {count}</button>
-			</section>
+			<EventCalendar />
 		</>
 	)
 }

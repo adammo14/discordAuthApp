@@ -1,0 +1,214 @@
+.race-page {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 24px 16px 64px;
+	text-align: left;
+}
+
+.race-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+.race-header h1 { margin: 0 0 4px; font-size: 30px; letter-spacing: -0.5px; line-height: 1.15; }
+.race-header p { margin: 0; }
+
+.muted { color: var(--text); font-size: 14px; }
+.race-error { color: #dc2626; font-size: 14px; }
+
+.card {
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	padding: 20px;
+	background: var(--bg);
+}
+.card h2 { margin-top: 0; }
+
+/* Event list */
+.event-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.event-card {
+	display: flex; justify-content: space-between; align-items: center; gap: 16px;
+	padding: 16px; border: 1px solid var(--border); border-radius: 10px;
+	text-decoration: none; color: inherit;
+}
+.event-card:hover { border-color: var(--accent-border); }
+.event-card-main { display: flex; flex-direction: column; gap: 4px; }
+.event-card-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+
+.status {
+	font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em;
+	padding: 2px 8px; border-radius: 999px;
+}
+.status-planning { background: var(--social-bg); color: var(--text); }
+.status-locked { background: var(--accent-bg); color: var(--accent); }
+
+/* Forms */
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+.field label { font-size: 13px; color: var(--text); }
+.field-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.field-row .field { flex: 1 1 160px; }
+.card input, .card select {
+	font-size: 14px; padding: 8px 10px; border-radius: 6px;
+	border: 1px solid var(--border); background: var(--bg); color: var(--text-h);
+}
+.new-event { margin-bottom: 24px; }
+
+.save-btn {
+	font-size: 14px; padding: 8px 16px; border-radius: 6px; cursor: pointer;
+	color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent-border);
+}
+.save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.link-btn {
+	background: none; border: none; color: var(--accent); cursor: pointer;
+	font-size: 13px; padding: 2px 4px; text-decoration: underline;
+}
+.link-btn.danger { color: #dc2626; }
+
+/* Detail grid */
+.race-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.stint-card { grid-column: 1 / -1; }
+@media (max-width: 800px) { .race-grid { grid-template-columns: 1fr; } }
+
+/* Car vote */
+.car-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.car-row { display: grid; grid-template-columns: 1fr 120px auto auto; align-items: center; gap: 10px; }
+.car-row.chosen { font-weight: 600; }
+.car-pick { display: flex; align-items: center; gap: 8px; }
+.badge { font-size: 10px; text-transform: uppercase; padding: 2px 6px; border-radius: 999px; background: var(--social-bg); color: var(--text); margin-left: 6px; }
+.badge-admin { background: var(--accent-bg); color: var(--accent); }
+.vote-bar { height: 8px; background: var(--social-bg); border-radius: 4px; overflow: hidden; }
+.vote-bar span { display: block; height: 100%; background: var(--accent); }
+.vote-count { min-width: 20px; text-align: right; }
+.car-admin { display: flex; gap: 4px; }
+.inline-form { display: flex; gap: 8px; margin-top: 12px; }
+.inline-form input { flex: 1; }
+
+/* Availability */
+.avail-row { align-items: center; gap: 8px; margin-bottom: 8px; }
+.avail-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.avail-summary { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 12px; }
+.avail-summary ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+
+/* Setups */
+.setup-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.setup-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; }
+.setup-actions { display: flex; gap: 8px; white-space: nowrap; }
+.upload-form { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; align-items: center; border-top: 1px solid var(--border); padding-top: 14px; }
+
+/* Stint plan */
+.stint-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.stint-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 12px; }
+.stint-table th, .stint-table td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.stint-table tr.uncovered { background: rgba(220, 38, 38, 0.08); }
+.stint-totals { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.table-scroll { overflow-x: auto; }
+
+/* Home calendar */
+.cal-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+.cal-top h1 { margin: 0; font-size: 30px; letter-spacing: -0.5px; }
+.cal-top .save-btn { text-decoration: none; }
+
+.cal-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 12px 0; }
+.cal-nav { display: flex; gap: 12px; }
+.cal-month { margin: 0; font-size: 20px; }
+
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.cal-weekday { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); padding: 4px 6px; text-align: left; }
+.cal-cell {
+	min-height: 92px; border: 1px solid var(--border); border-radius: 8px; padding: 6px;
+	display: flex; flex-direction: column; gap: 4px; background: var(--bg);
+}
+.cal-out { opacity: 0.45; }
+.cal-today { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-border) inset; }
+.cal-date { font-size: 13px; color: var(--text-h); font-weight: 600; }
+.cal-events { display: flex; flex-direction: column; gap: 3px; }
+.cal-chip {
+	display: block; width: 100%; text-align: left; border: none; cursor: pointer;
+	font-size: 11px; line-height: 1.3; padding: 3px 6px; border-radius: 5px;
+	background: var(--accent-bg); color: var(--accent);
+	white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.cal-chip.status-locked { background: var(--social-bg); color: var(--text-h); }
+.cal-chip-time { font-weight: 700; }
+
+.upcoming { margin-top: 28px; }
+.upcoming h2 { border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+
+@media (max-width: 700px) {
+	.cal-cell { min-height: 64px; }
+	.cal-chip { font-size: 10px; }
+}
+
+/* --- Sim theming --------------------------------------------------------- */
+:root {
+	--sim-lmu: #f97316;      /* Le Mans Ultimate — orange */
+	--sim-lmu-bg: rgba(249, 115, 22, 0.12);
+	--sim-iracing: #3b82f6;  /* iRacing — blue */
+	--sim-iracing-bg: rgba(59, 130, 246, 0.12);
+}
+.sim-badge {
+	display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap;
+	font-size: 11px; padding: 3px 8px; border-radius: 999px; margin-top: 6px;
+	border: 1px solid transparent;
+}
+.sim-badge.sim-md { font-size: 13px; padding: 4px 10px; }
+.sim-badge-name { font-weight: 700; }
+.sim-badge-sep { position: relative; padding-left: 8px; }
+.sim-badge-sep::before { content: '·'; position: absolute; left: 2px; opacity: 0.6; }
+.sim-lmu { background: var(--sim-lmu-bg); color: var(--sim-lmu); border-color: var(--sim-lmu); }
+.sim-iracing { background: var(--sim-iracing-bg); color: var(--sim-iracing); border-color: var(--sim-iracing); }
+.sim-unknown { background: var(--social-bg); color: var(--text); }
+
+/* Left-accent bar on cards/chips by sim */
+.accent-lmu { border-left: 4px solid var(--sim-lmu); }
+.accent-iracing { border-left: 4px solid var(--sim-iracing); }
+.cal-chip.accent-lmu { border-left: 3px solid var(--sim-lmu); background: var(--sim-lmu-bg); color: var(--sim-lmu); }
+.cal-chip.accent-iracing { border-left: 3px solid var(--sim-iracing); background: var(--sim-iracing-bg); color: var(--sim-iracing); }
+
+.detail-badges { margin: 6px 0; }
+.race-header-actions { display: flex; align-items: center; gap: 16px; }
+
+/* --- Wizard -------------------------------------------------------------- */
+.wizard-steps {
+	display: flex; gap: 8px; list-style: none; padding: 0; margin: 8px 0 20px; flex-wrap: wrap;
+}
+.wizard-steps li {
+	display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text);
+	padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+}
+.wizard-steps li.active { color: var(--accent); border-color: var(--accent-border); background: var(--accent-bg); }
+.wizard-steps li.done { color: var(--text-h); }
+.wizard-step-num {
+	display: inline-flex; align-items: center; justify-content: center;
+	width: 20px; height: 20px; border-radius: 50%; font-size: 12px;
+	background: var(--social-bg); color: var(--text-h);
+}
+.wizard-steps li.active .wizard-step-num { background: var(--accent); color: #fff; }
+
+.wizard-body { min-height: 200px; }
+.pick-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+.pick-card {
+	flex: 1 1 160px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+	padding: 18px; border: 2px solid var(--border); border-radius: 12px; cursor: pointer;
+	background: var(--bg); color: var(--text-h); font-size: 16px; text-align: left;
+}
+.pick-card:hover { border-color: var(--accent-border); }
+.pick-card.selected { border-color: var(--accent); background: var(--accent-bg); }
+.pick-card.sim-lmu.selected { border-color: var(--sim-lmu); background: var(--sim-lmu-bg); }
+.pick-card.sim-iracing.selected { border-color: var(--sim-iracing); background: var(--sim-iracing-bg); }
+.pick-emoji { font-size: 24px; }
+
+.wizard-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.review-list { display: flex; flex-direction: column; gap: 10px; margin: 0; }
+.review-list > div { display: flex; gap: 12px; }
+.review-list dt { width: 120px; color: var(--text); flex-shrink: 0; }
+.review-list dd { margin: 0; color: var(--text-h); font-weight: 500; }
+
+/* Car vote tweaks */
+.chosen-line { margin: 0 0 12px; }
+.car-row .car-name { font-size: 14px; }
+.tally { margin-top: 8px; }
+.lock-row { display: flex; gap: 8px; margin-top: 14px; border-top: 1px solid var(--border); padding-top: 14px; }
+.lock-row select { flex: 1; }
